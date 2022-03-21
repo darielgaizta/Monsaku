@@ -3,6 +3,10 @@ import java.lang.Thread;
 
 public class Main {
 	public static void main(String[] args) {
+		Configuration movePool = new Configuration("config/MovePool.csv");
+		Configuration monsterPool = new Configuration("config/MonsterPool.csv");
+		Configuration elementTypesPool = new Configuration("config/ElementTypesEffectivity.csv");
+
 		String turn;	// Home's or Away's
 		String home;	// Player 1
 		String away;	// Player 2
@@ -54,7 +58,7 @@ public class Main {
 				System.out.println("\n>----["+home+" vs "+away+"]----<\n");
 
 				// pass
-				System.out.println("Game is not ready yet :)");
+				System.out.println("Game is not ready yet :)\nDEBUG:");
 				break;
 
 			} else if (q == 2) {
