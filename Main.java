@@ -12,10 +12,20 @@ public class Main {
 		Configuration movePool = new Configuration("config/MovePool.csv");
 		Configuration monsterPool = new Configuration("config/MonsterPool.csv");
 		Configuration elementTypePool = new Configuration("config/ElementTypesEffectivity.csv");
-
+		int input;
 		while (isGameStarted) {
 			Controller.showMenu();
-			int input = scanner.nextInt();
+			while (true) {
+				try {
+					input = scanner.nextInt();
+					break;
+				} catch (Exception e) {
+					System.out.println("[Error] Wrong input, select an integer from the square bracket ([]).");
+					Controller.showMenu();
+					scanner.next();
+					// TODO: handle exception
+				}	
+			}
 			if (input == 0) {
 				System.exit(0);
 			} else if (input == 1) {
@@ -183,7 +193,7 @@ public class Main {
 			} else if (input == 2) {
 				System.out.println("\n(C) Monsaku Inc.");
 			} else {
-				System.out.println("[Error] Wrong input.");
+				System.out.println("[Error] Wrong input, select an integer from the square bracket ([]).");
 			}
 			if (!isGameStarted) {
 				System.out.println("\n>-----[ CONGRATULATIONS ]-----<\n");
