@@ -195,7 +195,7 @@ public class Move {
 		}
 		if (moveType.equals("STATUS")){
 			damage = 0;
-			target.getBaseStats().setHealthPoint(target.getBaseStats().getHealthPoint() + (getHealthPointEffect()*target.getBaseStats().getMaxHealthPoint()));
+			target.getBaseStats().setHealthPoint(Math.floor(target.getBaseStats().getHealthPoint() + (getHealthPointEffect()*target.getBaseStats().getMaxHealthPoint()/100)));
 			target.getBaseStats().setAttack(target.getBaseStats().getAttack() * getFactor(getAttackEffect()));
 			target.getBaseStats().setDefense(target.getBaseStats().getDefense() * getFactor(getDefenseEffect()));
 			target.getBaseStats().setSpAttack(target.getBaseStats().getSpAttack() * getFactor(getSpAttackEffect()));
