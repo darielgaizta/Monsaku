@@ -20,5 +20,5 @@ Since, it is built with Java, this program requires you to download JDK (Java De
 >>> javac Main.java
 >>> java Main
 ```
-The command *javac Main.java* will compile the Main.java and java Main will run the program. There might be an error while compiling Main.java if you didn't download the JDK and JRE properly. <br>
+The command **javac Main.java** will compile the Main.java and **java Main** will run the program. There might be an error while compiling Main.java if you didn't download the JDK and JRE properly. <br>
 That's it, thank you!
