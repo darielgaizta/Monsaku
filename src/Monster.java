@@ -41,14 +41,37 @@ public class Monster {
 		return this.moves;
 	}
 
-
 	/* Method: printElementTypes(), print all element types */
 	public void printElementTypes() {
 		for (ElementType e : elementTypes) {
 			System.out.println("| => "+String.valueOf(e));
 		}
 	}
+	
+	/* Method: printMoves(), print all moves */
+	public void printMoves() {
+		for (Move m : moves) {
+			if (m.getBasePower() == 0 && m.getHealthPointEffect() == 0) {
+				System.out.println("| => "+m.getName()+" (Buff to "+m.getTarget()+")");
+			} else if (m.getBasePower() == 0) {
+				System.out.println("| => "+m.getName()+" (+"+m.getHealthPointEffect()+"% Health Point)");
+			} else {
+				System.out.println("| => "+m.getName()+" (Power: "+m.getBasePower()+")");
+			}
+		}
+	}
 
+	/* Method: selectMove(), print all moves to be executed */
+	public void selectMove() {
+		for (int i = 0; i < moves.size(); i++) {
+			int ammunition = moves.get(i).getAmmunition();
+			if (i == 0) {
+				System.out.println("-["+String.valueOf(i+1)+"] "+moves.get(i).getName()+" (Ammunition: Infinity)");
+			} else {
+				System.out.println("-["+String.valueOf(i+1)+"] "+moves.get(i).getName()+" (Ammunition: "+moves.get(i).getAmmunition()+")");
+			}
+		}
+	}
 
 	/* Class: Stats */
 	static class Stats implements StatusCondition {
