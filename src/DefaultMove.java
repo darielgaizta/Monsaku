@@ -1,34 +1,29 @@
 import java.util.*;
 
-class DefaultMove extends Move {
-	int buffHp;
-	int buffAttack;
-	int buffDefense;
-	int buffSpecialAttack;
-	int buffSpecialDefense;
-	int buffSpeed;
-
-	// constructor
-	public StatusMove(String name, ElementType elementType, String moveType,
-		int accuracy, int priority, int basePower, int ammunition) {
-		super(name, elementType, moveType, accuracy, priority, basePower, ammunition);
-		System.out.println("Status Move created.");
+public class DefaultMove extends Move {
+	
+	/* Constructor: DefaultMove */
+	public DefaultMove() {
+		super(0, "NORMAL", "Basic Attack", null, 100, 0, (int) Double.POSITIVE_INFINITY, "ENEMY", 50);
 	}
 
 	@Override
-	public void execute(Monster target) {
-		int rint = (int) Math.floor(Math.random() * 5) + 1;
-		if (rint == 1) {
-			target.getStats().burn();
-		} else if (rint == 2) {
-			target.getStats().poison();
-		} else if (rint == 3) {
-			target.getStats().sleep();
-		} else if (rint == 4) {
-			target.getStats().paralyze();
-		} else if (rint == 5) {
-			target.setStatsByFactors(buffHp, buffAttack, buffDefense,
-			buffSpecialAttack, buffSpecialDefense, buffSpeed);
+	public void execute(Monster source, Monster target, List<String[]> elementTypePool) {
+		if (source.getBaseStats().getHealthPoint() == 0) {
+			System.out.println(source.getName()+" is dead, can't execute any move.");
+		} else {
+			double burnedEff = 1;
+			if (target.getBaseStats().getBurnTime() > 0) {
+				burnedEff = 0.5;
+			}
+			double damage = calculateDamage(source.getBaseStats().getAttack(), target.getBaseStats().getDefense(), 1, burnedEff);
+			source.getBaseStats().setHealthPoint(source.getBaseStats().getHealthPoint() - (source.getBaseStats().getMaxHealthPoint()/4));
+			target.getBaseStats().setHealthPoint((target.getBaseStats().getHealthPoint() - damage));
+			System.out.println(source.getName()+" used "+this.getName()+" [Damage: "+String.valueOf(damage)+"]");
+			System.out.println("HP >> -"+String.valueOf(source.getBaseStats().getMaxHealthPoint()/4)+" HP\n");
+			if (source.getBaseStats().getHealthPoint() == 0) {
+				System.out.println(source.getName()+" is dead because its default move.");
+			}
 		}
 	}
 }
