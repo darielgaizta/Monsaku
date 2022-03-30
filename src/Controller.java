@@ -43,8 +43,8 @@ public abstract class Controller {
 	public static void viewGameInfo(Monster monst1, Monster monst2, List<Monster> subsMonst1, List<Monster> subsMonst2) {
 		System.out.println("");
 		System.out.println(">-----------# GAME HAS STARTED #-----------<");
-		System.out.println("| (Player 1) "+monst1.getName()+" vs "+monst2.getName()+" (Player 2)");
-		System.out.println("| Monsters from Playing:");
+		System.out.println("| (Playing) "+monst1.getName()+" vs "+monst2.getName()+" (Against)");
+		System.out.println("| Monsters from Player 1:");
 		for (Monster monster : subsMonst1) {
 			if (monster.getBaseStats().getHealthPoint() > 0) {
 				System.out.print("| - (Live) ");
@@ -54,7 +54,7 @@ public abstract class Controller {
 			System.out.println(monster.getName());
 		}
 		System.out.println("| ==========================================");
-		System.out.println("| Monsters from Against:");
+		System.out.println("| Monsters from Player 2:");
 		for (Monster monster : subsMonst2) {
 			if (monster.getBaseStats().getHealthPoint() > 0) {
 				System.out.print("| - (Live) ");
@@ -280,15 +280,6 @@ public abstract class Controller {
 		}
 		if (playingMonster.getBaseStats().getSleepTime() > 0) {
 			playingMonster.getBaseStats().sleep(playingMonster);
-			if (playingMonster.getBaseStats().getHealthPoint() == 0) {
-				System.out.println(playingMonster.getName()+" is dead because of sleeping.");
-			}
-		}
-		if (playingMonster.getBaseStats().getParalyzeTime() > 0) {
-			playingMonster.getBaseStats().paralyze(playingMonster);
-			if (playingMonster.getBaseStats().getHealthPoint() == 0) {
-				System.out.println(playingMonster.getName()+" is dead because of paralyzed.");
-			}
 		}
 	}
 
