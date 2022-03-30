@@ -62,7 +62,6 @@ public class Monster {
 		private int burnTime;
 		private int poisonTime;
 		private int sleepTime;
-		private int paralyzeTime;
 
 		/* Constructor: Stats */
 		public Stats(double healthPoint, double attack, double defense, double spAttack, double spDefense, double speed) {
@@ -125,11 +124,6 @@ public class Monster {
 			return this.sleepTime;
 		}
 
-		/* Getter: paralyzeTime */
-		public int getParalyzeTime() {
-			return this.paralyzeTime;
-		}
-
 		/* Setter: healthPoint */
 		public void setHealthPoint(double healthPoint) {
 			this.healthPoint = healthPoint;
@@ -180,25 +174,19 @@ public class Monster {
 			this.sleepTime = sleepTime;
 		}
 
-		/* Setter: paralyzeTime */
-		public void setParalyzeTime(int paralyzeTime) {
-			this.paralyzeTime = paralyzeTime;
-		}
-
 		@Override
 		public void burn(Monster target) {
 			double healthPoint = target.getBaseStats().getHealthPoint();
 			target.getBaseStats().setHealthPoint(Math.floor(healthPoint - (healthPoint / 8)));
-			target.getBaseStats().setBurnTime(target.getBaseStats().getBurnTime() - 1);
-			System.out.println(target.getName()+" is burned, remaining burned time: "+String.valueOf(target.getBaseStats().getBurnTime()));
+			System.out.println(target.getName()+" is burned (Damage >> -50% Damage)");
+			System.out.println(target.getName()+" is burned (HP >> -"+String.valueOf(Math.floor((healthPoint / 8)))+" HP)");
 		}
 
 		@Override
 		public void poison(Monster target) {
 			double healthPoint = target.getBaseStats().getHealthPoint();
 			target.getBaseStats().setHealthPoint(Math.floor(healthPoint - (healthPoint / 16)));
-			target.getBaseStats().setPoisonTime(target.getBaseStats().getPoisonTime() - 1);
-			System.out.println(target.getName()+" is poisoned, remaining poisoned time: "+String.valueOf(target.getBaseStats().getPoisonTime()));
+			System.out.println(target.getName()+" is poisoned (HP >> -"+String.valueOf(Math.floor((healthPoint / 16)))+" HP)");
 		}
 
 		@Override
@@ -208,12 +196,10 @@ public class Monster {
 		}
 
 		@Override
+		/* paralyze(), decrease speed to 50% */
 		public void paralyze(Monster target) {
-			target.getBaseStats().setParalyzeTime(target.getBaseStats().getParalyzeTime() - 1);
-			if (target.getBaseStats().getParalyzeTime() == 0) {
-				target.getBaseStats().setSpeed(target.getBaseStats().getSpeed() * 2);
-			}
-			System.out.println(target.getName()+" is paralyzed, remaining paralyzed time: "+String.valueOf(target.getBaseStats().getParalyzeTime()));
+			target.getBaseStats().setSpeed(Math.floor(target.getBaseStats().getSpeed() / 2));
+			System.out.println(target.getName()+" is paralyzed (Speed >> -50% Speed)");
 		}
 	}
 }
