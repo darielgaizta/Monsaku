@@ -97,6 +97,16 @@ public class Monster {
 			this.speed = speed;
 		}
 
+		/* Method: printBaseStats(), print all stats */
+		public void printBaseStats(){
+			System.out.println("| => Health Point: " + String.valueOf(healthPoint));
+			System.out.println("| => Attack: " + String.valueOf(attack));
+			System.out.println("| => Defense: " + String.valueOf(defense));
+			System.out.println("| => Sp. Attack: " + String.valueOf(spAttack));
+			System.out.println("| => Sp. Defense: " + String.valueOf(spDefense));
+			System.out.println("| => Speed: " + String.valueOf(speed));
+		}
+
 		/* Getter: maxHealthPoint */
 		public double getMaxHealthPoint() {
 			return this.maxHealthPoint;
