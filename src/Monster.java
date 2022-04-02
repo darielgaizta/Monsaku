@@ -73,6 +73,16 @@ public class Monster {
 		}
 	}
 
+	/* Method: printBaseStats(), print all stats */
+	public void printBaseStats() {
+		System.out.println("| => Health Point: " + String.valueOf(baseStats.getHealthPoint()));
+		System.out.println("| => Attack: " + String.valueOf(baseStats.getAttack()));
+		System.out.println("| => Defense: " + String.valueOf(baseStats.getDefense()));
+		System.out.println("| => Sp. Attack: " + String.valueOf(baseStats.getSpAttack()));
+		System.out.println("| => Sp. Defense: " + String.valueOf(baseStats.getSpDefense()));
+		System.out.println("| => Speed: " + String.valueOf(baseStats.getSpeed()));
+	}
+
 	/* Class: Stats */
 	static class Stats implements StatusCondition {
 		private double maxHealthPoint;
@@ -95,16 +105,6 @@ public class Monster {
 			this.spAttack = spAttack;
 			this.spDefense = spDefense;
 			this.speed = speed;
-		}
-
-		/* Method: printBaseStats(), print all stats */
-		public void printBaseStats() {
-			System.out.println("| => Health Point: %s" + String.valueOf(healthPoint));
-			System.out.println("| => Attack: %s" + String.valueOf(attack));
-			System.out.println("| => Defense: %s" + String.valueOf(defense));
-			System.out.println("| => Sp. Attack: %s" + String.valueOf(spAttack));
-			System.out.println("| => Sp. Defense: %s" + String.valueOf(spDefense));
-			System.out.println("| => Speed: %s" + String.valueOf(speed));
 		}
 
 		/* Getter: maxHealthPoint */
