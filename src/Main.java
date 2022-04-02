@@ -271,10 +271,12 @@ public class Main {
 					System.out.println("\n(C) Monsaku Inc.");
 				} else if (in == '0') {
 					/* Exit ----- */
+					System.out.println("\nExit..");
 					isGameStarted = false;
 				} else {
 					System.out.println("[Error] Wrong input, select an integer from the square bracket.");
 				}
+				scanner.close();
 			} catch (Exception e) {
 				System.out.println("[Error] Game has failed to start.");
 				isGameStarted = false;

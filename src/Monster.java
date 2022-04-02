@@ -98,13 +98,13 @@ public class Monster {
 		}
 
 		/* Method: printBaseStats(), print all stats */
-		public void printBaseStats(){
-			System.out.println("| => Health Point: " + String.valueOf(healthPoint));
-			System.out.println("| => Attack: " + String.valueOf(attack));
-			System.out.println("| => Defense: " + String.valueOf(defense));
-			System.out.println("| => Sp. Attack: " + String.valueOf(spAttack));
-			System.out.println("| => Sp. Defense: " + String.valueOf(spDefense));
-			System.out.println("| => Speed: " + String.valueOf(speed));
+		public void printBaseStats() {
+			System.out.println("| => Health Point: %s" + String.valueOf(healthPoint));
+			System.out.println("| => Attack: %s" + String.valueOf(attack));
+			System.out.println("| => Defense: %s" + String.valueOf(defense));
+			System.out.println("| => Sp. Attack: %s" + String.valueOf(spAttack));
+			System.out.println("| => Sp. Defense: %s" + String.valueOf(spDefense));
+			System.out.println("| => Speed: %s" + String.valueOf(speed));
 		}
 
 		/* Getter: maxHealthPoint */
