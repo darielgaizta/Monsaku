@@ -58,6 +58,8 @@ public class Main {
 					while (isGameStarted) {
 
 						/* Initialize state --- */
+						boolean switch1 = false;
+						boolean switch2 = false;
 						Monster monster1 = null;
 						Monster monster2 = null;
 						List<Move> moves = new ArrayList<Move>();
@@ -161,11 +163,13 @@ public class Main {
 												System.out.println("You have switched your playing monster to "+monster1.getName()+".");
 												subs1 = monster1;
 												haveSwitched1 = true;
+												switch1 = true;
 											} else if (monster == monster2) {
 												monster2 = player.getMonsters().get(Integer.valueOf(n)-1);
 												System.out.println("You have switched your playing monster to "+monster2.getName()+".");
 												subs2 = monster2;
 												haveSwitched2 = true;
+												switch2 = true;
 											}
 											counter++;
 											hasTurn = true;
@@ -190,6 +194,13 @@ public class Main {
 									System.out.println("[Error] Wrong input, input [0] for Help.");
 								}
 							}
+						}
+
+						/* Switch control ----- */
+						if (switch1) {
+							target.set(0, monster1);
+						} else if (switch2) {
+							target.set(0, monster2);
 						}
 
 						/* Sort Moves --------- */
@@ -241,9 +252,9 @@ public class Main {
 								System.out.println("\n]==== FIGHT ====[>\n");
 								System.out.println("HP "+sourceMonster.getName()+": "+sourceMonster.getBaseStats().getHealthPoint());
 								System.out.println("HP "+targetMonster.getName()+": "+targetMonster.getBaseStats().getHealthPoint());
-								Controller.handleStatusCondition(sourceMonster);
 								// -----
 								if (sourceMonster.getBaseStats().getSleepTime() == 0) {
+									Controller.handleStatusCondition(sourceMonster);
 									move.execute(sourceMonster, targetMonster, elementTypePool.getConfig());
 									if (targetMonster.getBaseStats().getHealthPoint() == 0) {
 										System.out.println("("+sourceMonster.getName()+") Killing spree!");
@@ -254,6 +265,8 @@ public class Main {
 											haveSwitched2 = false;
 										}
 									}
+								} else {
+									Controller.handleStatusCondition(sourceMonster);
 								}
 							}
 						}
@@ -271,12 +284,10 @@ public class Main {
 					System.out.println("\n(C) Monsaku Inc.");
 				} else if (in == '0') {
 					/* Exit ----- */
-					System.out.println("\nExit..");
 					isGameStarted = false;
 				} else {
 					System.out.println("[Error] Wrong input, select an integer from the square bracket.");
 				}
-				scanner.close();
 			} catch (Exception e) {
 				System.out.println("[Error] Game has failed to start.");
 				isGameStarted = false;
