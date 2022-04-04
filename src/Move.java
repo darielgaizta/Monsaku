@@ -214,7 +214,7 @@ public class Move {
 				} else if (statusCondition.equals("PARALYZE")) {
 					target.getBaseStats().paralyze(target);
 					if (Controller.getSleepPossibility() == 1) {
-						target.getBaseStats().setSleepTime(target.getBaseStats().getSleepTime() + 2);
+						target.getBaseStats().setSleepTime(target.getBaseStats().getSleepTime() + 1);
 						System.out.println(target.getName()+" is sleeping while paralyzed (+1 Sleeping TIme)");
 					}
 				}

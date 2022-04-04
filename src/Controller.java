@@ -109,7 +109,7 @@ public abstract class Controller {
 
 	/* Method: getSleepPossibility(), get sleep possibility. */
 	public static int getSleepPossibility() {
-		int[] possibilities = {0, 1};
+		int[] possibilities = {1, 0};
 		int[] frequencies = {25, 75};
 		return randomizeSleepPossibility(possibilities, frequencies, 2);
 	}
