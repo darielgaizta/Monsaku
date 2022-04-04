@@ -67,7 +67,7 @@ public class Main {
 						List<Monster> target = new ArrayList<Monster>();
 						
 						/* Initialize monster - */
-						if (haveSwitched1) {
+						if (haveSwitched1 && subs1.getBaseStats().getHealthPoint() != 0) {
 							monster1 = subs1;
 						} else {
 							for (Monster m1 : player1.getMonsters()) {
@@ -76,7 +76,7 @@ public class Main {
 								}
 							}
 						}
-						if (haveSwitched2) {
+						if (haveSwitched2 && subs2.getBaseStats().getHealthPoint() != 0) {
 							monster2 = subs2;
 						} else {
 							for (Monster m2 : player2.getMonsters()) {
@@ -197,7 +197,9 @@ public class Main {
 						}
 
 						/* Switch control ----- */
-						if (switch1) {
+						if (switch1 && switch2) {
+							// do nothing
+						} else if (switch1) {
 							target.set(0, monster1);
 						} else if (switch2) {
 							target.set(0, monster2);
