@@ -12,7 +12,7 @@ Sistem dan Teknologi Informasi <br>
 30 Maret 2022 <br>
 
 ## About
-Monsaku is a CLI-based game inspired by Pokemon(TM). It simulates a fight between two players (PvP) with their own monsters. When the game starts, each player will use a random monster from their available monsters to start playing. Each of them can choose whether they want to perform a move or switch monster.
+Monsaku is a CLI-based game inspired by Pokemon&#8482;. It simulates a fight between two players (PvP) with their own monsters. When the game starts, each player will use a random monster from their available monsters to start playing. Each of them can choose whether they want to perform a move or switch monster.
 
 ## How to Run
 Since, it is built with Java, this program requires you to download JDK (Java Development Kit) and JRE (Java Runtime Environtment). If you have downloaded them, open your terminal and head to the directory where the Main.java is located. Then, type:
