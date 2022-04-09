@@ -13,7 +13,7 @@ public class DefaultMove extends Move {
 			System.out.println(source.getName()+" is dead, can't execute any move.");
 		} else {
 			double burnedEff = 1;
-			if (target.getBaseStats().getBurnTime() > 0) {
+			if (source.getBaseStats().getBurnTime() > 0) {
 				burnedEff = 0.5;
 			}
 			double damage = calculateDamage(source.getBaseStats().getAttack(), target.getBaseStats().getDefense(), 1, burnedEff);
