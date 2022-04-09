@@ -291,12 +291,12 @@ public class Main {
 				} else {
 					System.out.println("[Error] Wrong input, select an integer from the square bracket.");
 				}
-				scanner.close();
 			} catch (Exception e) {
 				System.out.println("[Error] Game has failed to start.");
 				isGameStarted = false;
 				e.printStackTrace();
 			}
 		}
+		scanner.close();
 	}
 }
