@@ -180,7 +180,12 @@ public class Main {
 									}
 								} else if (command == '3') {
 									// view monster info
-									Controller.viewMonsterInfo(monster);
+									System.out.println("");
+									System.out.println("----------------------------");
+									System.out.println("|     List of Monsters      ");
+									for (Monster m : player.getMonsters()) {
+										Controller.viewMonsterInfo(m);
+									}
 								} else if (command == '4') {
 									// view game info
 									if (monster == monster1) {
